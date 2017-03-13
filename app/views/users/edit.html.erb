@@ -1,0 +1,9 @@
+<h1>Hallgató adatainak szerkesztése</h1>
+
+<%= render 'form', user: @user %>
+
+<!-- <%= link_to 'Show', @user %> | -->
+<a><%= link_to users_path do %>
+  <i id="backicon" class="fa fa-arrow-circle-left" aria-hidden="true" style="font-size:36px;color:black;text-shadow:2px 2px 4px #000000;"></i>
+<% end %>
+</a>

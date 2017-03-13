@@ -1,0 +1,85 @@
+<script>
+
+/* Set the width of the side navigation to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+
+  <ul class='no-print'>
+    <!-- Use any element to open the sidenav -->
+    <!-- <span onclick="openNav()">
+    <li>
+      <a>
+        open
+      </a>
+    </li></span> -->
+    <li><a href="#home"><i id="menuicon" class="fa fa-angle-double-up" style="font-size:24px;color:lightgrey;text-shadow:2px 2px 4px #000000;"></i></a></li>
+    <li id="navbardis" style="inline-block", ><a style="font-size:24px">Belépőkártyák</a></li>
+    <li style="float:right">
+      <!-- <%= link_to 'Delete', :onclick => 'Users.find_each(&:destroy)' %> -->
+
+    </li>
+    <li style="float:right">
+      <%= link_to new_user_path, class: "btn btn-default" do %>
+        <i id="menuicon" class="fa fa-user-plus" style="font-size:24px;color:lightgrey;text-shadow:2px 2px 4px #000000; background-color:none"></i>
+      <% end %>
+    </li>
+    <!-- <li  style="float:right"><a href="/users/new"><i class="fa fa-user-plus" style="font-size:36px;color:lightgreen;text-shadow:2px 2px 4px #000000;"></i></a></li> -->
+  </ul>
+
+
+
+    <% @users.each do |user| %>
+      <table class="card"  <% if user.id%2==1%> id="float"> <%else%> > <%end%>
+            <tr>
+              <td id="name" colspan="2" width="280" height="25"><%= user.name %></td>
+              <td class='no-print'>
+                <!-- <%= link_to 'Show', user %> -->
+                <%= link_to edit_user_path(user) do %>
+                  <i id="cardicon" class="fa fa-pencil" style="font-size:24px; color:black" aria-hidden="false"></i>
+                <% end %>
+              </td>
+              <td class='no-print'>
+                <%= link_to user, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i id="cardicon" class="fa fa-times" style="font-size:24px;color:red;text-shadow:2px 2px 4px #000000;" aria-hidden="true"></i>
+                <% end %>
+
+              </td>
+            </tr>
+              <td width="150"><img src="/assets/<%= user.pic %>" width="150" height="150" alt="jofel" /></td>
+              <td id="room"><%= user.room %></td>
+          </tr>
+      </table>
+    <% end %>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
